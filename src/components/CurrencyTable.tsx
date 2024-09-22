@@ -38,36 +38,38 @@ const CurrencyTable: React.FC<CurrencyTableProps> = ({
         className="mb-2"
         placeholder="Search name or code"
       />
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead className="text-left">Currency Name</TableHead>
-            <TableHead className="text-left">Currency Code</TableHead>
-            <TableHead className="text-left">Exchange Rate (UZS)</TableHead>
-            <TableHead className="text-left">Change (%)</TableHead>
-            <TableHead className="text-left">Date</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {filteredCurrencies?.map((currency) => (
-            <TableRow key={currency.id}>
-              <TableCell>{currency.CcyNm_EN}</TableCell>
-              <TableCell>{currency.Ccy}</TableCell>
-              <TableCell>{currency.Rate}</TableCell>
-              <TableCell
-                className={`${
-                  parseFloat(currency.Diff) > 0
-                    ? "text-green-500"
-                    : "text-red-500"
-                }`}
-              >
-                {currency.Diff}%
-              </TableCell>
-              <TableCell>{currency.Date}</TableCell>
+      <div className="overflow-x-auto">
+        <Table className="min-w-full">
+          <TableHeader>
+            <TableRow>
+              <TableHead className="text-left">Currency Name</TableHead>
+              <TableHead className="text-left">Currency Code</TableHead>
+              <TableHead className="text-left">Exchange Rate (UZS)</TableHead>
+              <TableHead className="text-left">Change (%)</TableHead>
+              <TableHead className="text-left">Date</TableHead>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHeader>
+          <TableBody>
+            {filteredCurrencies?.map((currency) => (
+              <TableRow key={currency.id}>
+                <TableCell>{currency.CcyNm_EN}</TableCell>
+                <TableCell>{currency.Ccy}</TableCell>
+                <TableCell>{currency.Rate}</TableCell>
+                <TableCell
+                  className={`${
+                    parseFloat(currency.Diff) > 0
+                      ? "text-green-500"
+                      : "text-red-500"
+                  }`}
+                >
+                  {currency.Diff}%
+                </TableCell>
+                <TableCell>{currency.Date}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
     </div>
   );
 };
